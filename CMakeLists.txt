@@ -311,6 +311,7 @@ option(DOWNLOAD_GTEST "build gtest from downloaded sources" OFF)
 include(CTest)
 
 if(DOWNLOAD_GTEST OR GTEST_SRC_DIR)
+    message(STATUS "Setting build_testing to on")
     set(BUILD_TESTING ON)
 endif()
 
