@@ -306,16 +306,16 @@ endif ()
 # Tests
 # =====
 
-option(BUILD_TESTING "Build tests" OFF)
+option(XEUS_BUILD_TESTING "Build tests" OFF)
 option(DOWNLOAD_GTEST "build gtest from downloaded sources" OFF)
 include(CTest)
 
 if(DOWNLOAD_GTEST OR GTEST_SRC_DIR)
     message(STATUS "Setting build_testing to on")
-    set(BUILD_TESTING ON)
+    set(XEUS_BUILD_TESTING ON)
 endif()
 
-if(BUILD_TESTING)
+if(XEUS_BUILD_TESTING)
     add_subdirectory(test)
 endif()
 
