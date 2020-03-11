@@ -4,7 +4,14 @@ matrix:
   include:
       #- os: linux
     - os: linux
-      env: XEUS_STATIC_DEPENDENCIES=1
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-7
+            - binutils-2.29
+      env: XEUS_STATIC_DEPENDENCIES=1 COMPILER=gcc GCC=7
       #- os: osx
       #osx_image: xcode8
       #compiler: clang
@@ -13,6 +20,8 @@ env:
     - MINCONDA_VERSION="latest"
     - MINCONDA_LINUX="Linux-x86_64"
     - MINCONDA_OSX="MacOSX-x86_64"
+before install:
+    - export CXX=g++-$GCC CC=gcc-$GCC;
 install:
     # Install conda
     - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then
