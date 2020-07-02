@@ -246,7 +246,11 @@ macro(xeus_create_target target_name linkage output_name)
         PUBLIC xtl
     )
 
-    target_link_libraries(${target_name} PUBLIC OpenSSL::Crypto)
+    if (MSVC AND OPENSSL_USE_STATIC_LIBS)
+        target_link_libraries(${target_name} PUBLIC libopenssl_static)
+    else()
+        target_link_libraries(${target_name} PUBLIC OpenSSL::Crypto)
+    endif()
 
     if (NOT MSVC)
         if (APPLE)
