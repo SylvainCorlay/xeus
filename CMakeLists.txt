@@ -68,6 +68,8 @@ else()
     set(OPENSSL_USE_STATIC_LIBS OFF CACHE BOOL "Not linking statically with OpenSSL")
 endif()
 
+message(STATUS "Openssl flag:" ${OPENSSL_USE_STATIC_LIBS})
+
 # Dependencies
 # ============
 
